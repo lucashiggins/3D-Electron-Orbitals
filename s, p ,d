@@ -1,0 +1,113 @@
+clc 
+clear
+
+Created by Lucas Higgins
+
+%% angles
+
+theta = linspace (0, 2*pi);
+phi = linspace (0, 2*pi);
+
+[theta, phi] = meshgrid (theta, phi);
+
+%% s
+
+Y00 = ((1/2) * (1/(sqrt(pi)))) .^2;
+
+[x00, y00, z00] = sph2cart(theta, phi, Y00);
+
+figure('Name', 'Y00')
+surf(x00, y00, z00);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+%% p
+
+%%
+Yn11 = ((1/2) * (sqrt(3/(2*pi))) .* (sin(theta)) .* (exp(-phi))) .^2;
+
+[xn11, yn11, zn11] = sph2cart(theta, phi, Yn11);
+
+figure('Name', 'Yn11')
+surf(xn11, yn11, zn11);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+Y11 = ((-1/2) * (sqrt(3/(2*pi))) .* (sin(theta)) .* (exp(phi))) .^2;
+
+[x11, y11, z11] = sph2cart(theta, phi, Y11);
+
+figure('Name', 'Y11')
+surf(x11, y11, z11);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+%%
+Y01 = ((1/2) * (sqrt(3/pi)) .* (cos(theta))) .^2;
+
+[x01, y01, z01] = sph2cart(theta, phi, Y01);
+
+figure('Name', 'Y01')
+surf(x01, y01, z01);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+axis([-0.30 0.3 -0.3 0.3 -0.3 0.3])
+
+%% d
+
+%%
+Yn22 = ((1/4) * (sqrt(15/(2*pi))) .* ((sin(theta)).^2) .* (exp(-2.* 1i .* phi))) .^2;
+Yn22 = abs(Yn22);
+[xn22, yn22, zn22] = sph2cart(theta, phi, Yn22);
+
+figure('Name', 'Yn22')
+surf(xn22, yn22, zn22);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+Y22 = ((1/4) * (sqrt(15/(2*pi))) .* ((sin(theta)).^2) .* (exp(2.*phi))) .^2;
+
+[x22, y22, z22] = sph2cart(theta, phi, Y22);
+
+figure('Name', 'Y22')
+surf(x22, y22, z22);
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+%% 
+Yn12 = ((1/2) * (sqrt(15/(2*pi))) .* (sin(theta)) .* (cos(theta)) .* (exp(-phi))) .^2;
+
+[xn12, yn12, zn12] = sph2cart(theta, phi, Yn12);
+
+figure('Name', 'Yn12')
+surf(xn12, yn12, zn12); 
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+Y12 = ((-1/2) * (sqrt(15/(2*pi))) .* (sin(theta)) .* (cos(theta)) .* (exp(phi))) .^2;
+
+[x12, y12, z12] = sph2cart(theta, phi, Y12);
+
+figure('Name', 'Y12')
+surf(x12, y12, z12); 
+xlabel('x');
+ylabel('y');
+zlabel('z');
+
+%%
+Y02 = ((1/4) * (sqrt(5/pi)) .* (3 .* ((cos(theta)) .^2) -1)) .^2; 
+
+[x02, y02, z02] = sph2cart(theta, phi, Y02);
+
+figure('Name', 'Y02')
+surf(x02, y02, z02);
+xlabel('x');
+ylabel('y');
+zlabel('z');
